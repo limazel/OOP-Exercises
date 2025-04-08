@@ -1,29 +1,36 @@
 public class Book {
+    private String isbn;
     private String name;
-    private Author[] authors;
+    private Author author;
     private double price;
     private int qty;
 
-    public Book(String name, Author[] authors, double price) {
+    public Book(String isbn, String name, Author author, double price) {
+        this.isbn = isbn;
         this.name = name;
-        this.authors = authors;
+        this.author = author;
         this.price = price;
         this.qty = 0;
     }
 
-    public Book(String name, Author[] authors, double price, int qty) {
+    public Book(String isbn, String name, Author author, double price, int qty) {
+        this.isbn = isbn;
         this.name = name;
-        this.authors = authors;
+        this.author = author;
         this.price = price;
         this.qty = qty;
+    }
+
+    public String getIsbn() {
+        return isbn;
     }
 
     public String getName() {
         return name;
     }
 
-    public Author[] getAuthors() {
-        return authors;
+    public Author getAuthor() {
+        return author;
     }
 
     public double getPrice() {
@@ -41,27 +48,12 @@ public class Book {
     public void setQty(int qty) {
         this.qty = qty;
     }
-
-    public String getAuthorNames() {
-        String names = "";
-        for (int i = 0; i < authors.length; i++) {
-            names += authors[i].getName();
-            if (i < authors.length - 1) {
-                names += ", ";
-            }
-        }
-        return names;
+    
+    public String getAuthorName() {
+        return author.getName();
     }
 
     public String toString() {
-        String result = "Book[name=" + name + ",authors={";
-        for (int i = 0; i < authors.length; i++) {
-            result += authors[i].toString();
-            if (i < authors.length - 1) {
-                result += ", ";
-            }
-        }
-        result += "},price=" + price + ",qty=" + qty + "]";
-        return result;
+        return "Book[ISBN=" + isbn + ", name=" + name + ", author=" + author.toString() + ", price=" + price + ", qty=" + qty + "]";
     }
 }
